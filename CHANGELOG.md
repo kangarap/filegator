@@ -2,10 +2,101 @@
 
 ## Upcoming...
 
+## 7.9.2 - 2023-01-25
+* Docker update, container port changed from 80 to 8080 (see #376)
+
+Notes / Breaking Changes:
+
+This could be a breaking change for those who use docker or docker-compose.
+Please check your configuration (docker-compose.yml) and update container port to 8080
+
+
+## 7.9.1 - 2023-01-20
+* Lockout bugfix
+
+## 7.9.0 - 2023-01-20
+* Added configurable lockout for incorrect login attempts (see configuration_sample.php)
+
+## 7.8.7 - 2022-10-17
+* Dockerfile fix
+
+## 7.8.6 - 2022-10-17
+* Estonian translation added, thanks @ihvz
+* CI pipeline fix
+
+## 7.8.5 - 2022-10-12
+* Docker config updated
+
+## 7.8.4 - 2022-10-12
+* CI pipelines added
+
+## 7.8.3 - 2022-10-10
+* Security fix, see #349
+* Persian translations added
+
+## 7.8.2 - 2022-07-22
+* Arabic translations added
+* Brazilian Portuguese translations added
+* Output buffer flush fix
+
+## 7.8.1 - 2022-05-25
+* Database auth adapter session fix
+* Development mode warning added, see installation docs https://docs.filegator.io/install.html
+
+## 7.8.0 - 2022-05-24 [Security]
+* This version patches a security vulnerabilities please upgrade asap
+
+## 7.7.2 - 2022-02-18
+
+* Hebrew translation with RTL added, see #301 (Thanks yaniv1983)
+* Romanian translation added, see #302 (Thanks enyedi)
+* Default error_reporting set to pre-php8 (Fixes #307)
+
+## 7.7.1 - 2022-01-13
+
+* Fix file deletion error when overwrite on upload #293 (Thanks iwiniwin)
+* PHP 8.1 issue fixed, see #295 (Thanks bashgeek)
+* Small bug fixes
+
+## 7.7.0 - 2021-09-27
+
+* Default cookie options added: cookie_httponly=true, cookie_secure=null
+* Clickjacking prevention with X-Frame-Options/Content-Security-Policy headers
+* Fixes #243, #239, #246, #251, #254, #257
+* Slovenian translation added, (Thanks megamiska.eu)
+* Dependency bumps
+* Docs update
+* Default logo update to vector
+
+Notes / Breaking Changes:
+
+The new default value of the cookie_secure option is null, which makes cookies secure when the request is using HTTPS and doesn't modify them when the request uses HTTP. The new behavior is a good balance between making your app "safe by default" and not breaking any existing app.
+
+If your filegator is used inside an iFrame, it may stop working after the upgrade. Set 'allow_insecure_overlays' to true to maintain compatibility. https://github.com/filegator/filegator/blob/63645f6e047eef828a96f913bd421f7018c94e05/configuration_sample.php#L75
+
+## 7.6.0 - 2021-07-12
+
+* Better search with configurable simultaneous search limit, fixes #234
+
+## 7.5.3 - 2021-07-05
+
+* Invalidate sessions when the user is changed, prevents session fixation (json, database)
+* Cookie samesite defaults to Lax, fixes #232
+
+## 7.5.2 - 2021-06-24
+
+* Composer update
+* Flysystem patch GHSA-9f46-5r25-5wfm
+* Min supported PHP version is now 7.2.5
+
+## 7.5.1 - 2021-03-23
+
 * New csrf token key config option added
 * Ldap adapter improvements, new config param for attributes, pr #184 (Thanks @lzkill)
 * Logger added to security service, fixes #183
 * Japanese translation added (Thanks @tubuanha)
+* Two consecutive periods bugfix for #202
+* Axios auto-transform json turned off, fixes #201
 
 ## 7.5.0 - 2021-02-05
 

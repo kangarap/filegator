@@ -2,14 +2,20 @@
 currentMenu: install
 ---
 
-## Minimum Requirements
-- PHP 7.2+ (with php-zip extension)
+## Docker
+You can use the [official docker image](https://hub.docker.com/r/filegator/filegator) based on [this Dockerfile](https://github.com/filegator/filegator/blob/master/Dockerfile)
+```
+docker run -p 8080:8080 -d filegator/filegator
+visit: http://127.0.0.1:8080 login as admin/admin123
+```
 
+## Minimum Requirements
+- PHP 7.2.5+ (with php-zip extension)
 
 ## Download precompiled build
 Precompiled build is created for non-developers. In this version, the frontend (html, css and javascript) is compiled for you and the source code is removed so the final archive contains only minimum files.
 
-- Download: [v7.5.0](https://github.com/filegator/static/raw/master/builds/filegator_v7.5.0.zip)
+- Download the [latest release](https://github.com/filegator/static/raw/master/builds/filegator_latest.zip)
 - Unzip files and upload them to your PHP server
 - Make sure your webserver can read and write to `filegator/repository/` and `filegator/private/` folders
 - Set the website document root to `filegator/dist/` directory. This is also known as 'public' folder
@@ -17,17 +23,17 @@ Precompiled build is created for non-developers. In this version, the frontend (
 - Login with default credentials `admin/admin123`
 - Change default admin's password
 
-NOTE: For security reasons `/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser.
+NOTE: For security reasons `filegator/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser. If you run the script from the root folder, you will see the message **'Development mode'** as a security warning.
 
 ## Install on fresh Ubuntu 18.04 or Debian 10.3
 On a new server ([get $100 in server credits](https://m.do.co/c/93994ebda78d)) login as root and enter this into the shell:
 ```
 apt update
-apt install -y wget unzip php apache2 libapache2-mod-php php-zip
+apt install -y wget unzip php apache2 libapache2-mod-php php-zip php-mbstring php-dom php-xml
 
 cd /var/www/
-wget https://github.com/filegator/static/raw/master/builds/filegator_v7.5.0.zip
-unzip filegator_v7.5.0.zip && rm filegator_v7.5.0.zip
+wget https://github.com/filegator/static/raw/master/builds/filegator_latest.zip
+unzip filegator_latest.zip && rm filegator_latest.zip
 
 chown -R www-data:www-data filegator/
 chmod -R 775 filegator/
@@ -54,15 +60,9 @@ Open your browser and go to http://your_server_ip_address
 - Become a backer or sponsor on [Patreon](https://www.patreon.com/alcalbg).
 
 
-## Upgrade
+## Upgrade instructions
 
-Since version 7 is completely rewriten from scratch, there is no clear upgrade path from older versions.
-
-If you have an older version of FileGator please backup everything and install the script again.
-
-Upgrade instructions for non-developers:
-
-- Backup everythig
+- Backup everything
 - Download the latest version
 - Replace all files and folders except `repository/` and `private/`
 

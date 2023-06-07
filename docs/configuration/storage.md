@@ -9,7 +9,8 @@ You can use local filesystem (default), FTP, SFTP, Amazon S3, DigitalOcean Space
 
 Please check the Flysystem [docs](https://flysystem.thephpleague.com/v1/docs/) for the exact setup required for each adapter.
 
-Note: Some adapters do not support folder operations or their support is limited.
+Notes: Some adapters do not support folder operations or their support is limited.
+Requiring additional libraries with [composer](https://getcomposer.org/download/) requires root access.
 
 ## Default Local Disk Adapter
 With default adapter you just need to configure where your `repository` folder is. This folder will serve as a root for everything else.
@@ -56,7 +57,7 @@ Sample configuration:
 ```
 
 ## SFTP Adapter
-You must require additional library `composer require league/flysystem-sftp`
+You must require additional library `composer require league/flysystem-sftp:^1.0 -W`
 
 For more advanced options like using your private key or changing the document root see official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/sftp/).
 
@@ -108,9 +109,9 @@ Sample configuration:
 ```
 
 ## Amazon S3 Adapter (v3)
-You must require additional library `composer require league/flysystem-aws-s3-v3`
+You must require additional library `composer require league/flysystem-aws-s3-v3:^1.0 -W`
 
-See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/aws-s3/).
+See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/aws-s3-v3/).
 
 Sample configuration:
 
@@ -138,7 +139,7 @@ Sample configuration:
 ```
 
 ## DigitalOcean Spaces
-You must require additional library `composer require league/flysystem-aws-s3-v3`
+You must require additional library `composer require league/flysystem-aws-s3-v3:^1.0 -W`
 
 The DigitalOcean Spaces API are compatible with those of S3.
 
@@ -170,7 +171,7 @@ Sample configuration:
 
 ```
 ## Microsoft Azure Blob Storage
-You must require additional library `composer require league/flysystem-azure-blob-storage`
+You must require additional library `composer require league/flysystem-azure-blob-storage:^1.0 -W`
 
 See official [documentation](https://flysystem.thephpleague.com/v1/docs/adapter/azure/).
 

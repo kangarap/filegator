@@ -6,12 +6,14 @@ return [
     'overwrite_on_upload' => false,
     'timezone' => 'UTC', // https://www.php.net/manual/en/timezones.php
     'download_inline' => ['pdf'], // download inline in the browser, array of extensions, use * for all
+    'lockout_attempts' => 5, // max failed login attempts before ip lockout
+    'lockout_timeout' => 15, // ip lockout timeout in seconds
 
     'frontend_config' => [
         'app_name' => 'FileGator',
         'app_version' => APP_VERSION,
         'language' => 'english',
-        'logo' => 'https://filegator.io/img/logo.png',
+        'logo' => 'https://filegator.io/filegator_logo.svg',
         'upload_max_size' => 100 * 1024 * 1024, // 100MB
         'upload_chunk_size' => 1 * 1024 * 1024, // 1MB
         'upload_simultaneous' => 3,
@@ -19,6 +21,7 @@ return [
         'editable' => ['.txt', '.css', '.js', '.ts', '.html', '.php', '.json', '.md'],
         'date_format' => 'YY/MM/DD hh:mm:ss', // see: https://momentjs.com/docs/#/displaying/format/
         'guest_redirection' => '', // useful for external auth adapters
+        'search_simultaneous' => 5,
         'filter_entries' => [],
     ],
 
@@ -44,7 +47,11 @@ return [
                     //$save_path = __DIR__.'/private/sessions';
                     $handler = new \Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler($save_path);
 
-                    return new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage([], $handler);
+                    return new \Symfony\Component\HttpFoundation\Session\Storage\NativeSessionStorage([
+                            "cookie_samesite" => "Lax",
+                            "cookie_secure" => null,
+                            "cookie_httponly" => true,
+                        ], $handler);
                 },
             ],
         ],
@@ -69,6 +76,7 @@ return [
                 'csrf_key' => "123456", // randomize this
                 'ip_allowlist' => [],
                 'ip_denylist' => [],
+                'allow_insecure_overlays' => false,
             ],
         ],
         'Filegator\Services\View\ViewInterface' => [

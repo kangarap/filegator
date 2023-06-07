@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/filegator/filegator/master/dist/img/logo.gif">
+<img src="https://raw.githubusercontent.com/filegator/filegator/master/dist/img/logo.svg">
 </p>
 
 <p align="center">
@@ -35,32 +35,34 @@ FileGator is a free, open-source project. It's an independent project with its o
 
 - [Become a backer or sponsor on Patreon](https://www.patreon.com/alcalbg).
 
-<table>
+<table align="center">
   <tbody>
     <tr>
       <td align="center" valign="middle">
         <a href="https://www.linkpreview.net/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
-          <img title="Preview Web Links with our Free API service. Get JSON Response for any URL" width="177px" src="https://www.linkpreview.net/images/logo-dark.png">
+          <img title="Preview Web Links with our Free API service. Get JSON Response for any URL" width="200px" src="https://www.linkpreview.net/images/logo-dark.png">
         </a>
       </td>
       <td align="center" valign="middle">
-        <a href="https://www.getping.info/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
-          <img title="Trigger an email, sms or slack notification with a simple GET request" width="177px" src="https://www.getping.info/img/logo.svg">
+        <a href="https://www.vanillavoice.com/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
+          <img title="VanillaVoice - Turn any Text into Human-Sounding Speech" width="200px" src="https://www.vanillavoice.com/logo.svg">
         </a>
       </td>
       <td align="center" valign="middle">
-        <a href="https://correctme.app/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
-          <img title="Free Online Grammar and Spell Checker" width="177px" src="https://correctme.app/logo.png">
+        <a href="https://www.savepage.io/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
+          <img title="Screenshot any website with our powerful API" width="200px" src="https://www.savepage.io/images/logo.svg">
         </a>
       </td>
-      <td align="center" valign="middle">
-        <a href="https://interactive32.com/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
-          <img title="Modern approach to software development" width="177px" src="https://interactive32.com/images/logo.png">
-        </a>
-      </td>
-    </tr><tr></tr>
+    </tr>
   </tbody>
 </table>
+
+## Demo
+[https://demo.filegator.io](https://demo.filegator.io)
+
+This is read-only demo with guest account enabled
+- you can log in as `john/john` to see John's private files
+- or `jane/jane` as readonly + download user.
 
 
 ## Typical use cases
@@ -72,13 +74,6 @@ FileGator is a free, open-source project. It's an independent project with its o
 - use as ftp/sftp replacement
 - manage s3 or other 3rd party cloud storage
 - use to quickly zip and download remote files
-
-## Demo
-[https://demo.filegator.io](https://demo.filegator.io)
-
-This is read-only demo with guest account enabled.
-- you can log in as `john/john` to see John's private files
-- or `jane/jane` as readonly + download user.
 
 
 ## Documentation
@@ -96,17 +91,29 @@ This is read-only demo with guest account enabled.
 - No database required
 - Framework free [™](https://www.youtube.com/watch?v=L5jI9I03q8E)
 
+## Limitations
+- Symlinks are not supported by the underlying [Flysystem](https://flysystem.thephpleague.com/v1/docs/adapter/local/)
+- File permission operations are not supported (chmod/chown)
+
+## Docker
+Check out [the official docker image](https://hub.docker.com/r/filegator/filegator) with instructions on how to use it
+
+Docker quick start:
+```
+docker run -p 8080:8080 -d filegator/filegator
+visit: http://127.0.0.1:8080 login as admin/admin123
+```
 
 ## Minimum Requirements
-- PHP 7.2+ (with php-zip extension)
+- PHP 7.2.5+ (with php-zip extension)
 
-See [install instructinos](https://docs.filegator.io/install.html) for Ubuntu 18.04 or Debian 10.3. Get $100 in ([server credits here](https://m.do.co/c/93994ebda78d)) so you can play around.
+See [install instructions](https://docs.filegator.io/install.html) for Ubuntu 18.04 or Debian 10.3. Get $100 in ([server credits here](https://m.do.co/c/93994ebda78d)) so you can play around.
 
 
 ## Download precompiled build
 Precompiled build is created for non-developers. In this version, the frontend (html, css and javascript) is compiled for you and the source code is removed so the final archive contains only minimum files.
 
-[Download & install instructinos](https://docs.filegator.io/install.html)
+[Download & install instructions](https://docs.filegator.io/install.html)
 
 
 ## Project setup for development (Linux)
@@ -149,9 +156,9 @@ npm run e2e
 
 ## Deployment
 
-Set the website document root to `/dist` directory. This is also known as 'public' folder.
+Set the website document root to `filegator/dist` directory. This is also known as 'public' folder.
 
-NOTE: For security reasons `/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser.
+NOTE: For security reasons `filegator/dist` is the ONLY folder you want to be exposed through the web. Everything else should be outside of your web root, this way people can’t access any of your important files through the browser. If you run the script from the root folder, you will see the message **'Development mode'** as a security warning.
 
 ## Show your support
 

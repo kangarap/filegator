@@ -9,8 +9,10 @@
  * file that was distributed with this source code.
  */
 
-if (version_compare(PHP_VERSION, '7.2', '<')) {
-    echo 'Minimum requirement is PHP 7.2 You are using: '.PHP_VERSION."\n";
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+
+if (version_compare(PHP_VERSION, '7.2.5', '<')) {
+    echo 'Minimum requirement is PHP 7.2.5 You are using: '.PHP_VERSION."\n";
     die;
 }
 
@@ -39,7 +41,7 @@ if (! defined('APP_PUBLIC_PATH')) {
 }
 
 define('APP_PUBLIC_DIR', __DIR__);
-define('APP_VERSION', '7.5.0');
+define('APP_VERSION', '7.9.2');
 
 use Filegator\App;
 use Filegator\Config\Config;
