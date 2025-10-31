@@ -44,8 +44,13 @@ FileGator is a free, open-source project. It's an independent project with its o
         </a>
       </td>
       <td align="center" valign="middle">
-        <a href="https://www.vanillavoice.com/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
-          <img title="VanillaVoice - Turn any Text into Human-Sounding Speech" width="200px" src="https://www.vanillavoice.com/logo.svg">
+        <a href="https://correctme.app/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
+          <img title="Free Online Grammar and Spell Checker" width="177px" src="https://correctme.app/logo.png">
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://interactive32.com/?utm_campaign=Sponsored%20GitHub%20FileGator" target="_blank">
+          <img title="Modern approach to software development" width="177px" src="https://interactive32.com/images/logo.png">
         </a>
       </td>
     </tr>
@@ -88,6 +93,7 @@ This is read-only demo with guest account enabled
 ## Limitations
 - Symlinks are not supported by the underlying [Flysystem](https://flysystem.thephpleague.com/v1/docs/adapter/local/)
 - File ownership is not supported (chown)
+- Too many files in the same directory can negatively impact performance
 
 ## Docker
 Check out [the official docker image](https://hub.docker.com/r/filegator/filegator) with instructions on how to use it
